@@ -1,0 +1,64 @@
+﻿<Page x:Class="TestOfRicheditboxPictureBug.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:TestOfRicheditboxPictureBug"
+      DataContext="{Binding RelativeSource={RelativeSource Self}}"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      Loaded="Page_Loaded"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <RichEditBox x:Name="reb"
+                     IsReadOnly="False" />
+
+        <StackPanel Grid.Row="1"
+                    HorizontalAlignment="Center">
+            <TextBlock x:Name="resultTb"
+                       Foreground="Green"
+                       FontSize="16" />
+            <TextBlock x:Name="savedTimesTb_description"
+                       TextWrapping="Wrap"
+                       TextTrimming="None"
+                       Foreground="Orange"
+                       FontSize="16">
+                <Run>The bug only appears after you save the document at least 2 times.</Run>
+                <LineBreak />
+                <Run>Saved Times: </Run>
+                <Bold><Run Text="{Binding SavedTimes}" /></Bold>
+            </TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2"
+                    Orientation="Vertical"
+                    HorizontalAlignment="Center">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin"
+                            Value="5" />
+                </Style>
+            </StackPanel.Resources>
+
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="loadButton"
+                        Click="loadButton_Click">Load original</Button>
+                <Button x:Name="saveWithBugButton"
+                        Click="saveWithBugButton_Click">Save with bug</Button>
+                <Button x:Name="saveWithFixingButton"
+                        Click="saveWithFixingButton_Click">Save with fixing</Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="reloadButton"
+                        Click="reloadButton_Click">Load output</Button>
+                <Button x:Name="reloadWithFixingButton"
+                        Click="reloadWithFixingButton_Click">Load output &amp; fix</Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
