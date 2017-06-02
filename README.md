@@ -12,3 +12,5 @@ This project is to demonstrate the bug and to fix it.
 After you save the document for the 2-nd time, the picture is gone, but the closing brace '}' for the picture block is still there, so all the content that comes after the brace '}' cannot be read.
 
 So we simply remove the odd brace and restore the picture that was gone using the same document (but unchanged one).
+
+https://stackoverflow.com/questions/44325651/richeditbox-picture-and-content-after-it-is-gone-in-windows-10-1703-creators-up
